@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grid View</title>
+</head>
+<body>
+<div>
+    <table border="1" width="600">
+        <caption> Products Grid </caption>
+        <th>Product Id</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Preview</th>
+        <tr ng-repeat="item in products">
+            <td>{{item.ProductId}}</td>
+            <td>{{item.Name}}</td>
+            <td>{{item.Price}}</td>
+            <td>
+                <img ng-src="{{item.Photo}}" width="50" height="50">
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

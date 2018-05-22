@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .background{
+            background-color: red;
+        }
+        .text{
+            color: white;
+            text-align: center;
+        }
+        .border{
+            border-style: dashed;
+        }
+    </style>
+    <script src="Scripts/angular.js"></script>
+</head>
+<body ng-app>
+<fieldset>
+    <legend>Select Styles</legend>
+    <ol>
+        <li>
+            <input type="checkbox" ng-model="bgstyle">
+            Background Style
+        </li>
+        <li>
+            <input type="checkbox" ng-model="txtstyle">
+            text Style
+        </li>
+        <li>
+            <input type="checkbox" ng-model="borderstyle">
+            Border Style
+        </li>
+    </ol>
+</fieldset>
+<h1 ng-class="{background : bgstyle, text : txtstyle, border : borderstyle}">Html</h1>
+</div>
+</body>
+</html>

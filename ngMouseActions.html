@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Scripts/angular.js"></script>
+</head>
+<body ng-app>
+<h2 ng-init="count=0" ng-mouseover="count=count+1"> Move mouse onto Heading</h2>
+Mouse is over Heading {{count}} times.
+<br>
+<div>
+    <img ng-init="bulb='Images/bulboff.png'" ng-src="{{bulb}}"
+         ng-mousedown="bulb='Images/bulbon.png'"
+         ng-mouseup="bulb='Images/bulboff.png'">
+    <br>
+    <h2>Press hold down your mouse button to turn ON Bulb</h2>
+</div>
+<br>
+<div>
+    <img ng-init="pic='Images/pepsi2.jpg'" ng-src="{{pic}}" width="400" height="100"
+         ng-mouseover="pic='Images/rDigital.jpg'" ng-mouseleave="pic='Images/pepsi2.jpg'">
+    <br>
+    Move mouse onto the Ad to Change it.
+</div>
+</body>
+</html>

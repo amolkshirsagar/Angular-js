@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app = angular.module('myApp',[]);
+        app.controller('DemoController', function ($scope) {
+            $scope.isVisible = false;
+            $scope.capslock = "";
+            $scope.checkStatus = function (event) {
+                $scope.keyCode = event.keyCode ? event.keyCode:event.which;
+                $scope.shiftKey = event.shiftKey ? event.shiftKey:((event.keyCode == 16)? true:false);
+
+                if ((($scope.keyCode >= 65 && $scope.keyCode <= 90) && !$scope.shiftKey) ||
+                    (($scope.keyCode >= 97 && $scope.keyCode <= 122) && $scope.shiftKey))
+                {
+                    $scope.capslock="ON";
+                }
+                else
+                {
+                    $scope.capslock="OFF";
+                }
+                if($scope.capslock == "ON")
+                {
+                    $scope.isVisible=true;
+                }
+                else
+                {
+                    $scope.isVisible=false;
+                }
+            }
+        });
+    </script>
+</head>
+<body ng-app="myApp" ng-controller="DemoController">
+<div align="center">
+    Your Password : <input type="password" ng-model="txtPwd" ng-keyup="checkStatus($event)">
+    <br><br>
+    <div ng-show="isVisible"> Warning : Capslock is ON
+    </div>
+</div>
+</body>
+</html>

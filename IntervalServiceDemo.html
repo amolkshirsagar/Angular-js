@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('myApp',[]);
+        app.controller('HomeController',function ($scope, $interval) {
+            $interval(function getTime() {
+                var now=new Date();
+                $scope.today=now.toLocaleTimeString();
+            },1000);
+        })
+    </script>
+</head>
+<body ng-app="myApp" ng-controller="HomeController">
+{{today}}
+</body>
+</html>

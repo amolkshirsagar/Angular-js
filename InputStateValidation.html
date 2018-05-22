@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Scripts/angular.js"></script>
+</head>
+<body ng-app="form1" novalidate>
+<form>
+User Name :
+<input type="text" ng-model="txtName" name="txtName" required ng-maxlength="10"><br>
+<div>
+    Pristine (Not Modified Yet) : {{form1.txtName.$pristine}}<br>
+    Dirty (Modified) : {{form1.txtName.$dirty}}<br>
+    Valid : {{form1.txtName.$valid}}<br>
+    Invalid : {{form1.txtName.$invalid}}<br>
+    Touched (Blur) : {{form1.txtName.$touched}}<br>
+    Untouched (Focus) : {{form1.txtName.$untouched}}<br>
+
+    Is Required Error : <span ng-if="form1.txtName.$error.required">Name Required</span><br>
+    Is Maxlength Error : <span ng-if="form1.txtName.$error.maxlength">Max Length 10 Chars Only</span>
+</div>
+</form>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app = angular.module('myApp',[]);
+        app.controller('HomeController',function ($scope) {
+            $scope.X=0;
+            $scope.Y=0;
+            $scope.msg="";
+            $scope.GetStatus = function (event) {
+                $scope.X = event.clientX;
+                $scope.Y = event.clientY;
+                if (($scope.x >=15 && $scope.x <= 248 &&  $scope.y <=75 && $scope.y <=206)) {
+                    $scope.msg = "Color is Orange.";
+                }
+                else if (($scope.x >=15 && $scope.x <= 248 && $scope.y <=75 && $scope.y <=206)){
+                    $scope.msg = "Color is Green";
+                }
+                else if (($scope.x >=15 && $scope.x <= 248 && $scope.y <=75 && $scope.y <=206)){
+                    $scope.msg="Color is Blue";
+                }
+                else {
+                    $scope.msg="All Colors";
+                }
+            }
+        })
+    </script>
+</head>
+<body ng-app="myApp" ng-controller="HomeController">
+<div>
+    X = {{X}} <br> Y = {{Y}} <br>
+    {{msg}}
+</div>
+<img ng-src="Images/sqr.jpg" width="500" height="300" ng-mousemove="GetStatus($event)">
+</body>
+</html>

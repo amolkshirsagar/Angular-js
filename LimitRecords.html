@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app = angular.module('myApp',[]);
+        app.controller('HomeController', function ($scope) {
+            var products = [
+                {ProductId: 1, Name: "Samsung TV", Price: 45000.99, Mfd: new Date('2018/01/10')},
+                {ProductId: 2, Name: "Nike Shoe", Price: 2500.50, Mfd: new Date('2018/01/08')},
+                {ProductId: 3, Name: "Samsung Mobile", Price: 12999.99, Mfd: new Date('2018/01/22')},
+                {ProductId: 4, Name: "Seagate External Drive", Price: 4500.25, Mfd: new Date('2018/02/01')},
+                {ProductId: 5, Name: "Phillips Trimmer", Price: 1250.25, Mfd: new Date('2018/02/05')},
+                {ProductId: 6, Name: "Fastrack Watch", Price: 2700.50, Mfd: new Date('2018/01/16')},
+                {ProductId: 7, Name: "Fastrack Wallet", Price: 1200.00, Mfd: new Date('2018/01/18')},
+                {ProductId: 8, Name: "Sandisk 64GB Pendrive", Price: 1500.00, Mfd: new Date('2018/02/03')},
+                {ProductId: 9, Name: "Dell Inspiron N5050", Price: 32000.75, Mfd: new Date('2018/02/06')},
+                {ProductId: 10, Name: "Killer Denim", Price: 1750.50, Mfd: new Date('2018/02/04')
+                }
+            ];
+            $scope.products = products;
+        })
+    </script>
+</head>
+<body ng-app="myApp" ng-controller="HomeController">
+<div align="center">
+    <br>
+    No. of Records Per Page:
+    <select ng-model="records">
+        <option value ="3">3</option>
+        <option value ="5">5</option>
+        <option value ="10">10</option>
+    </select> <br> <br>
+</div>
+<table align="center" width="600" border="1">
+    <th>Product Id</th>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Manufactured</th>
+    <tr ng-repeat="item in products | limitTo:records">
+        <td>{{item.ProductId}}</td>
+        <td>{{item.Name | uppercase}}</td>
+        <td>{{item.Price | currency:'&#8377;'}}</td>
+        <td>{{item.Mfd | date}}</td>
+    </tr>
+</table>
+</body>
+</html>

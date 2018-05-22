@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('myApp',[]);
+        app.controller('DemoController',function ($scope, $http) {
+            $http({
+                method:"GET",
+                url:"home.html"
+            })
+                .then(function success(response) {
+                    $scope.msg = response.statusText;
+                }, function failed(response) {
+                    $scope.msg=response.statusText;
+                })
+        })
+    </script>
+</head>
+<body ng-app="myApp" ng-controller="DemoController">
+Status : {{msg}}
+</body>
+</html>

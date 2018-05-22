@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        dt{
+            font-weight: bold;
+        }
+    </style>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('myApp',[]);
+        app.controller('HomeController',function ($scope, $http) {
+            $http.get("Demo.html")
+                .then(function (response) {
+                        $scope.statusCode = response.status;
+                        $scope.statusText = response.statusText;
+                        $scope.data = response.data;
+                    },
+                    function (response) {
+                        $scope.statusText = response.statusText;
+                        $scope.statusCode = response.status;
+                        $scope.data = "no Data Returned.";
+                    })
+        })
+    </script>
+</head>
+<body ng-app="myApp" ng-controller="HomeController">
+<dl>
+    <dt> Status Code</dt>
+    <dd>{{statusCode}}</dd>
+    <dt>Status Text</dt>
+    <dd>{{statusText}}</dd>
+    <dt>Data</dt>
+    <dd>{{data}}</dd>
+    <dd><pre>{{data}}</pre></dd>
+</dl>
+</body>
+</html>

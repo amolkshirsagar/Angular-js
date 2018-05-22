@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app = angular.module('myApp',[]);
+        app.controller('HomeController', function ($scope) {
+            var products = [{ProductId : 1, Name : "Samsung TV", Price : 45000.99, Mfd : new Date('2018/01/10')},
+                {ProductId : 2, Name : "Nike Shoe", Price : 2500.50, Mfd : new Date('2018/01/08')},
+                {ProductId : 3, Name : "Samsung Mobile", Price : 12999.99, Mfd : new Date('2018/01/22')},
+                {ProductId : 4, Name : "Seagate External Drive", Price : 4500.25, Mfd : new Date('2018/02/01')}
+            ];
+            $scope.products = products;
+            $scope.fieldname = 'ProductId';
+            $scope.reverse = false;
+            $scope.Sort = function (fieldname) {
+                $scope.fieldname = fieldname;
+                $scope.reverse = ($scope.fieldname === fieldname ?! $scope.reverse: $scope.reverse);
+            }
+        })
+    </script>
+</head>
+<body ng-app="myApp" ng-controller="HomeController">
+<h2 align="center"> Sorting Table Ascending & Descending Order </h2>
+<table align="center" width="600" border="1">
+    <th> <a href="#" ng-click="Sort('ProductId')"> ProductId </a> </th>
+    <th> <a href="#" ng-click="Sort('Name')"> Name </a> </th>
+    <th> <a href="#" ng-click="Sort('Price')"> Price </a> </th>
+    <th> <a href="#" ng-click="Sort('Mfd')"> Manufactured </a> </th>
+    <tr ng-repeat="item in products | orderBy : fieldname : reverse">
+        <td> {{item.ProductId}} </td>
+        <td> {{item.Name | uppercase}} </td>
+        <td> {{item.Price | currency:'&#8377;'}} </td>
+        <td> {{item.Mfd | date}} </td>
+    </tr>
+</table>
+</body>
+</html>

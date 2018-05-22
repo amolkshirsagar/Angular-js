@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Catalog View</title>
+</head>
+<body>
+<div>
+    <table border="1" width="500">
+        <caption>Product Catalog</caption>
+        <tr ng-repeat="item in products">
+            <td>
+                <img ng-src="{{item.Photo}}" height="100" width="100">
+            </td>
+            <td>
+                <table frame="box" rules="all">
+                    <tr>
+                        <td>Product Id</td>
+                        <td>{{item.ProductId}}</td>
+                    </tr>
+                    <tr>
+                        <td>Name</td>
+                        <td>{{item.Name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Price</td>
+                        <td>{{item.Price}}</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

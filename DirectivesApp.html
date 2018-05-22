@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo App</title>
+    <script src="Scripts/angular.js"></script>
+</head>
+<body ng-app="">
+Enter Name : <input type="text" ng-model="txtName">
+<br>
+<div>
+    <b> ng-bind </b>
+    Hello ! <span ng-bind="txtName"></span>
+    <br>
+    <b> ng:bind </b>
+    Hi ! <span ng:bind="txtName"></span>
+    <br>
+    <b> ng_bind </b>
+    Hey ! <span ng_bind="txtName"></span>
+    <br>
+    <b> x-ng-bind </b>
+    Welcome ! <span x-ng-bind="txtName"></span>
+    <br>
+    <b> data-ng-bind </b>
+    How are you Mr. <span data-ng-bind="txtName"></span>
+    <br>
+</div>
+</body>
+</html>

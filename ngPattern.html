@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Scripts/angular.js"></script>
+</head>
+<body ng-app>
+<form name="form1">
+    Mobile : <input type="text" ng-pattern="/\+91[0-9]{10}/"
+                    placeholder="+91 10 digit number" name="txtMobile" ng-model="txtMobile">
+    <span ng-show="form1.txtMobile.$invalid">Invalid Mobile Number</span>
+</form>
+</body>
+</html>

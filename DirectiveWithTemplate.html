@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('myApp',[]);
+        app.controller('HomeController',function ($scope) {
+            $scope.product={Id:1,Name:"Mobile",Price:12999};
+        });
+        app.directive('ngProduct',function () {
+            return{
+                template:"<table border='1'>" +
+                "<tr> <td>Product Id</td>" +
+                "<td>{{product.Id}}</td></tr>" +
+                "<tr><td>Name</td>" +
+                "<td>{{product.Name}}</td></tr>" +
+                "<tr><td>Price</td>" +
+                "<td>{{product.Price}}</td></tr>" +
+                "</table>",
+                restrict:'EA'
+            }
+        })
+    </script>
+</head>
+<body ng-app="myApp" ng-controller="HomeController">
+<h2>Product Element</h2>
+<ng-product></ng-product><br>
+<h2>Product Attribute</h2>
+<div ng-product></div>
+</body>
+</html>

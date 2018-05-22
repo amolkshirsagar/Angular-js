@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Home</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app = angular.module('myApp',[]);
+        app.controller('HomeController', function ($scope) {
+            var products = [{ProductId : 1, Name : "Samsung tv", Price : 45000.89, Photo : "Images/tv1.jpg"},
+                {ProductId : 2, Name : "Nike Shoe", Price : 2500.75, Photo : "Images/shoe2.jpg"}];
+            $scope.products = products;
+            $scope.partialview = 'Grid.html';
+        });
+    </script>
+</head>
+<body ng-app="myApp", ng-controller="HomeController">
+<fieldset>
+    <legend>Select a Layout</legend>
+    <select ng-model="partialview">
+        <option value="Grid.html">Grid View</option>
+        <option value="Catalog.html">Catalog View</option>
+    </select>
+</fieldset><br>
+<div ng-include="partialview"></div>
+</body>
+</html>

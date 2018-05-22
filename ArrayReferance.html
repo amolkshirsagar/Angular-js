@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .background{
+            background-color: red;
+        }
+        .text{
+            color: white;
+            text-align: center;
+        }
+        .border{
+            border-style: dashed;
+        }
+    </style>
+    <script src="Scripts/angular.js"></script>
+</head>
+<body ng-app>
+Background : <input type="text" ng-model="backstyle" placeholder="background"><br>
+Border : <input type="text" ng-model="borderstyle" placeholder="border"><br>
+Text : <input type="text" ng-model="textstyle" placeholder="text"><br>
+<h1 ng-class="[backstyle, borderstyle, textstyle]">Html</h1>
+</body>
+</html>

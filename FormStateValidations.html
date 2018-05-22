@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Script/angular.js"></script>
+    <style>
+        dt{
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body ng-app='form1' novalidate>
+<fieldset>
+    <legend>Register</legend>
+    <div>
+        User Name : <input type="text" name="txtName" ng-model="txtName" required><br>
+        Age : <input type="number" name="txtAge" ng-model="txtAge"><br>
+        <button>Submit</button>
+    </div>
+</fieldset><br>
+<fieldset>
+    <legend>
+        Form State Validations
+    </legend>
+    <dl>
+        <dt>No Fields Modified</dt>
+        <dd>{{form1.$pristine}}</dd>
+        <dt>One or More Fields Modified</dt>
+        <dd>{{form1.$dirty}}</dd>
+        <dt>One or More Field Invalid</dt>
+        <dd>{{form1.$invalid}}</dd>
+        <dt>All Fields Valid</dt>
+        <dd>{{form1.$valid}}</dd>
+        <dt>Is Form Submitted</dt>
+        <dd>{{form1.$submitted}}</dd>
+    </dl>
+</fieldset>
+</body>
+</html>

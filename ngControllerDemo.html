@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Controller Demo</title>
+    <script src="Scripts/angular.js"></script>
+
+    <script>
+        var app = angular.module('myApp',[]);
+        app.controller('HomeController', function ($scope) {
+            $scope.title = "NareshIt Homepage";
+            $scope.msg = "this is our Homepage."
+        });
+
+        app.controller('ContactController', function ($scope) {
+            $scope.title = "Contact Us";
+            $scope.msg = "NareshIt  | Hyderabad  | 040-9549392";
+        });
+    </script>
+
+</head>
+<body ng-app="myApp">
+<div ng-controller="HomeController">
+    <h2 ng-bind="title"></h2>
+    <p>{{msg}}</p>
+</div>
+<div ng-controller="ContactController">
+    <h2 ng-bind = "title"></h2>
+    <address> {{msg}}</address>
+</div>
+</body>
+</html>

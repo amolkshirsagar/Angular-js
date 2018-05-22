@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('myApp',[]);
+        app.controller('HomeController',function ($scope) {
+            $scope.OpenImg=function () {
+                window.open('Images/mo1.png','graphic',"width = 600 height = 600");
+            }
+        })
+    </script>
+</head>
+<body ng-app="myApp", ng-controller="HomeController">
+<div>
+    <img src="Images/mo1.png" width="50" height="50" ng-dblclick="OpenImg()">
+    <br>
+    Double Click Image to View Actual Size
+</div>
+</body>
+</html>

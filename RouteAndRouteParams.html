@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-route.js"></script>
+    <script>
+        var app=angular.module('myApp',['ngRoute']);
+        app.config()
+            .when('/Product/:id/:name/:price',{
+                templateUrl:'Views/product.html',
+                controller:'ProductsController'
+            })
+        app.controller('ProductsController',function ($scope,$route,$routeParams) {
+            $scope.routeDetails=$route;
+            $scope.routeParams=$routeParams;
+            $scope.id=$routeParams.id;
+            $scope.name=$routeParams.name;
+            $scope.price=$routeParams.price;
+        })
+    </script>
+</head>
+<body ng-app="myApp" ng-controller="ProductsController">
+<table border="1" cellspacing="5" cellpadding="5" align="center">
+    <tr ng-repeat="item in products" align="center">
+        <td></td>
+    </tr>
+</table>
+Product ID:{{id}};<br>
+Name:{{name}};<br>
+Price:{{price}};<br>
+</body>
+</html>

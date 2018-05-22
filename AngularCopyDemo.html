@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('myApp',[]);
+        app.controller('HomeController',function ($scope) {
+            $scope.UserDetails={};
+            $scope.Reset=function (user) {
+                angular.copy($scope.UserDetails,user);
+            }
+            $scope.Register=function (user) {
+                angular.copy(user,$scope.UserDetails);
+            }
+        })
+    </script>
+</head>
+<body ng-app="myApp" ng-controller="HomeController">
+<form>
+    <fieldset>
+        <legend>Register User</legend>
+        <div>
+            User Name:
+            <input type="text" ng-model="user.name"><br>
+            Age:
+            <input type="number" min="15" max="30" ng-model="user.age"><br>
+            Gender:
+            <input type="radio" name="gender" ng-model="user.gender" value="Male">Male
+            <input type="radio" name="gender" ng-model="user.gender" value="Female">Female<br>
+            <button ng-click="Register(user)">Register</button>
+            <button ng-click="Reset()">Reset</button>
+        </div>
+    </fieldset><br><br>
+    <fieldset>
+        <legend>User Details</legend>
+        <div>
+            User Name : {{UserDetails.name}}<br>
+            Age : {{UserDetails.age}}<br>
+            Gender : {{UserDetails.gender}}
+        </div>
+    </fieldset>
+</form>
+</body>
+</html>

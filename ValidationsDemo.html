@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('myApp',[]);
+        app.controller('HomeController',function ($scope) {
+            $scope.txtPwd="";
+            $scope.regEx=/(?=.*[A-Z]\w{4,15})/;
+            $scope.msg="";
+            $scope.Verify=function () {
+                if ($scope.txtPwd.match($scope.regEx))
+                {
+                    $scope.msg="Password Verified.";
+                }
+                else
+                {
+                    $scope.msg="Invalid Password.";
+                }
+            }
+        })
+    </script>
+</head>
+<body ng-app="myApp" ng-controller="HomeController">
+<form>
+    Password : <input type="password" ng-model="txtPwd">
+    <span>{{msg}}</span><br>
+    <button ng-click="Verify()">Verify</button>
+</form>
+</body>
+</html>

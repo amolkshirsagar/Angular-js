@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Scripts/angular.js"></script>
+    <style>
+        dt{
+            font-weight: bold;
+            background-color: #f7e1b5;
+        }
+    </style>
+    <script>
+        var app=angular.module('myApp',[]);
+        app.controller('HomeController',function ($scope, $location) {
+            $scope.isVisible=false;
+            $scope.GetDetails=function(){
+                $scope.isVisible=true;
+                $scope.server=$location.host();
+                $scope.port=$location.port();
+                $scope.protocol=$location.protocol();
+                switch ($scope.protocol)
+                {
+                    case "http":
+                        $scope.msg="Page Accessed from Web Server.";
+                        break;
+                    case "file":
+                        $scope.msg="Page Accessed from File System.";
+                        break;
+                }
+                $scope.url=$location.absUrl();
+            }
+        })
+    </script>
+</head>
+<body ng-app="myApp" ng-controller="HomeController">
+<div align="center">
+    <button ng-click="GetDetails()">
+        Get Client Location Details.
+    </button>
+    <dl ng-show="isVisible">
+        <dt> Server Name | IP Address</dt>
+        <dd>{{server}}</dd>
+        <dt>Port Number</dt>
+        <dd>{{port}}</dd>
+        <dt>Protocol</dt>
+        <dd>{{protocol}}<br>{{msg}}</dd>
+        <dt>URL</dt>
+        <dd>{{url}}</dd>
+    </dl>
+</div>
+</body>
+</html>

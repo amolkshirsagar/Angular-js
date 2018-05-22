@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-route.js"></script>
+    <script>
+        var app=angular.module('myApp',['ngRoute']);
+        app.config(function ($routeProvider) {
+            $routeProvider
+                .when('/details/:ProductId',{
+                    templateUrl:'Views/details.html',
+                    controller:'DetailsController'
+                })
+        })
+        app.controller('HomeController',function ($scope, $http) {
+            $scope.products=[];
+            $http.get('Api/Products.json')
+                .success(function (response) {
+                    $scope.products=response;
+                })
+        });
+        app.controller('DetailsController',function ($scope, $routeParams) {
+            var id=$routeParams.ProductId;
+            for(var i=0;i<$scope.products.length;i++)
+            {
+                if($scope.products[i].ProductId==id)
+                {
+                    $scope.prodid=$scope.products[i].ProductId;
+                    $scope.name=$scope.products[i].Name;
+                    $scope.price=$scope.products[i].Price;
+                    $scope.photo=$scope.products[i].Photo;
+                }
+            }
+        });
+    </script>
+</head>
+<body ng-app="myApp" ng-controller="HomeController">
+  <table border="2" align="center">
+      <tr>
+          <td>
+              <ol>
+                  <li ng-repeat="item in products">
+                      <span><a href="#/Details/{{item.ProductId}}">{{item.Name}}</a></span>
+                  </li>
+              </ol>
+          </td>
+      </tr>
+  </table>
+  <hr>
+<div align="center">
+    <ng-view></ng-view>
+</div>
+</body>
+</html>

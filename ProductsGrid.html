@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-route.js"></script>
+    <script>
+        var app= angular.module('myApp',['ngRoute']);
+        app.config(function ($routeProvider) {
+            $routeProvider
+                .when('/details/:id',{
+                    templateUrl:'Views/details.html',
+                    controller:'DetailsController'
+                })
+        })
+        app.controller('HomeController',function ($scope, $http) {
+            $scope.products=[];
+            $http.get('Api/Products.json')
+                .then(function (response) {
+                    $scope.products = response.data;
+                })
+        })
+        app.controller('DetailsController',function ($scope, $routeParams) {
+            $scope.id=$routeParams.id;
+            for(var i=0; i<$scope.products.length; i++)
+            {
+                if ($scope.products[i].ProductId==$scope.id)
+                {
+                    $scope.prodid=$scope.products[i].ProductId;
+                    $scope.name=$scope.products[i].Name;
+                    $scope.price=$scope.products[i].Price;
+                    $scope.photo=$scope.products[i].Photo;
+                }
+            }
+        })
+    </script>
+</head>
+<body ng-app="myApp" ng-controller="HomeController">
+<table border="1" cellspacing="5" cellpadding="5" align="center">
+    <tr ng-repeat="item in products" align="center">
+        <td>
+            <img ng-src="{{item.photo}}" width="50" height="50">
+        </td>
+        <td>
+            <a href="#/details/{{item.ProductId}}">View Details</a>
+        </td>
+    </tr>
+</table><br><br>
+<div align="center">
+    <ng-view></ng-view>
+</div>
+</body>
+</html>

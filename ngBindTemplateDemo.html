@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bind template Demo</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app = angular.module("myApp",[]);
+        app.controller('HomeController',function ($scope) {
+            $scope.fname="Raj";
+            $scope.lname="Kumar"
+        });
+    </script>
+</head>
+<body ng-app="myApp", ng-controller="HomeController">
+<div ng-bind-template="{{fname}} {{lname}}">
+</div>
+<div ng-bind="10.50+20.25"></div>
+</body>
+</html>

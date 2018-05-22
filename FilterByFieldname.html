@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app = angular.module('myApp',[]);
+        app.controller('HomeController', function ($scope) {
+            var products = [{ProductId: 1, Name: "Samsung TV", Price: 45000.99, Mfd: new Date('2018/01/10')},
+                {ProductId: 2, Name: "Nike Shoe", Price: 2500.50, Mfd: new Date('2018/01/08')},
+                {ProductId: 3, Name: "Samsung Mobile", Price: 12999.99, Mfd: new Date('2018/01/22')},
+                {ProductId: 4, Name: "Seagate External Drive", Price: 4500.25, Mfd: new Date('2018/02/01')}
+            ];
+            $scope.products = products;
+        })
+    </script>
+</head>
+<body ng-app="myApp" ng-controller="HomeController">
+<fieldset>
+    <legend>Filter Products</legend>
+    <div>
+        Filter By Any : <input type="text" ng-model="search.$"><br>
+        Filter By Name : <input type="text" ng-model="search.Name"><br>
+        Filter By Price : <input type="text" ng-model="search.Price"><br>
+    </div>
+</fieldset> <br> <br>
+<table align="center" width="600" border="1">
+    <th> ProductyId </th>
+    <th> Name </th>
+    <th> Price </th>
+    <th> Manufactured </th>
+    <tr ng-repeat="item in products | filter : search">
+        <td> {{item.ProductId}} </td>
+        <td> {{item.Name}} </td>
+        <td> {{item.Price}} </td>
+        <td> {{item.Mfd}} </td>
+    </tr>
+</table>
+</body>
+</html>

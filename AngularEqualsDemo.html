@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app= angular.module('myApp',[]);
+        app.controller('HomeController',function ($scope) {
+            $scope.txtPwd="";
+                $scope.txtConfirm="";
+            $scope.msg="";
+            $scope.Verify = function () {
+                var result = angular.equals($scope.txtPwd, $scope.txtConfirm);
+                if(result == true)
+                {
+                    $scope.msg="Password Verified."
+                }
+                else
+                {
+                    $scope.msg="Password Mismatch";
+                }
+            }
+        });
+    </script>
+</head>
+<body ng-app="myApp" ng-controller="HomeController">
+<div>
+Password : <input type="password" ng-model="txtPwd"><br>
+Confirm Password : <input type="password" ng-model="txtConfirm">
+<span>{{msg}}</span><br><br>
+<button ng-click="Verify()">Verify Password</button>
+</div>
+</body>
+</html>

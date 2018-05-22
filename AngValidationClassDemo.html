@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Scripts/angular.js"></script>
+    <style>
+        input.ng-pristine{
+            background-color: yellow;
+        }
+        input.ng-touched.ng-invalid{
+            background-color: red;
+        }
+        input.ng-touched.ng-valid{
+            background-color: green;
+        }
+    </style>
+</head>
+<body ng-app>
+<div>
+    <form name="form1" novalidate>
+        <div>
+            <label for ="txtName">User Name</label>
+            <input type="text" name="txtName" ng-model="txtName" required>
+            <span ng-show="form1.txtName.$touched && form1.txtName.$error.required">
+                Name Required
+            </span>
+        </div>
+        <div>
+            <label for ="txtEmail">Email</label>
+            <input type="email" name="txtEmail" ng-model="txtEmail" required>
+            <span ng-show="form1.txtEmail.$touched && form1.txtEmail.$error.email">
+                Invalid Email
+            </span>
+        </div>
+        <button>Register</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-sanitize.js"></script>
+    <script>
+        var app=angular.module('myApp',['ngSanitize']);
+        app.factory('stringFunctions',function () {
+            var factory={};
+            factory.bold=function (str){
+                return str.bold();
+            }
+            factory.length=function (str) {
+                return str.length;
+            }
+            return factory;
+        });
+        app.factory('MathFunctions',function () {
+            var factory={};
+            factory.RandomNumber=function () {
+                return Math.random();
+            }
+            factory.Addition=function (a,b) {
+                return a+b;
+            }
+            return factory;
+        });
+        app.service('MathStringService',function (stringFunctions, MathFunctions) {
+            this.Bolder=function (str) {
+                return stringFunctions.bold(str);
+            }
+            this.Chars=function (str) {
+                return stringFunctions.length(str);
+            }
+            this.random=function (str) {
+                return MathFunctions.RandomNumber();
+            }
+            this.add=function (a,b) {
+                return MathFunctions.Addition(a,b);
+            }
+        });
+        app.controller('HomeController',function ($scope,MathStringService) {
+            var msg="Welcome to AngularJS.";
+            $scope.msg=MathStringService.Bolder(msg);
+            $scope.size=MathStringService.Chars(msg);
+            $scope.number=99285;
+            $scope.Refresh=function () {
+                var a=MathStringService.random()*10;
+                var b=MathStringService.random()*10;
+                var c=MathStringService.random()*10;
+                var d=MathStringService.random()*10;
+                var e=MathStringService.random()*10;
+                $scope.number=Math.round(a)+""+Math.round(b)+""+Math.round(c)+""+Math.round(d)+""+Math.round(e);
+            }
+            $scope.txtNo1="";
+            $scope.txtNo2="";
+            $scope.Add=function () {
+                $scope.result=MathStringService.add(parseInt($scope.txtNo1),parseInt($scope.txtNo2));
+            }
+        })
+    </script>
+</head>
+<body ng-app="myApp" ng-controller="HomeController">
+<div>
+    Bold:<span ng-bind-html="msg"></span><br>
+    Length:{{size}}
+</div><br><br>
+<div>
+    <span>{{number}}</span><br>
+    <button ng-click="Refresh()">Refresh</button>
+</div><br>
+<div>
+    Number1:<input type="text" ng-model="txtNo1"><br>
+    Number2:<input type="text" ng-model="txtNo2"><br>
+    <button ng-click="Add()">Add</button><br>
+    <div>Result:{{result}}</div>
+</div>
+</body>
+</html>

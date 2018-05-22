@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-route.js"></script>
+    <script>
+        var app=angular.module('myApp',['ngRoute']);
+        app.config(function ($routeProvider) {
+            $routeProvider
+                .when('/home',{
+                    templateUrl:'Views/home.html',
+                    Controller:'HomeController'
+                })
+                .when('/about',{
+                    templateUrl:'Views/about.html',
+                    Controller:'AboutController'
+                })
+                .when('/contact',{
+                    templateUrl:'Views/contact.html',
+                    Controller:'ContactController'
+                })
+                .otherwise({
+                    templateUrl:'Views/home.html',
+                    Controller:'HomeController'
+                })
+        })
+        app.controller('SiteController', function ($scope) {
+            $scope.title="NareshIT | Hyderabad";
+        })
+        app.controller('HomeController', function ($scope) {
+            $scope.title="NareshIT | Home";
+        })
+        app.controller('AboutController', function ($scope) {
+            $scope.title="About Us:";
+        })
+        app.controller('ContactController', function ($scope) {
+            $scope.title="Contact Us:";
+            $scope.address= "2nd Floor, Durga Bhavani Plaza, Ameerpet, 040-29958683, Hyderabad - 500016.";
+        })
+    </script>
+</head>
+<body ng-app="myApp" ng-controller="SiteController">
+<table border="2" align="center" width="1024" cellspacing="10" cellpadding="5">
+    <tr>
+        <td colspan="2" style="background-color: #89b3ff; color: white; text-align: center">
+            <h2>{{title}}</h2>
+        </td>
+    </tr>
+    <tr style="height: 300px; background-color: #bce8f1">
+        <td style="width: 300px; background-color: #bce8f1">
+            <ul>
+                <li><a href="#!home">HOME</a> </li>
+                <li><a href="#!about">ABOUT</a> </li>
+                <li><a href="#!contact">CONTACT</a> </li>
+            </ul>
+        </td>
+        <td style="width: 700px; background-color: #bce8f1">
+            <ng-view></ng-view>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" style="background-color: #89b3ff; color: white; text-align: center">
+            &copy; Copyright 2018<br>
+            Faculty | Courses | Offers | Development
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Open Directive Demo</title>
+    <script src="Scripts/angular.js"></script>
+</head>
+<body ng-app>
+<input type="checkbox" ng-model="ads"> Shows Ads <br>
+
+<table width="600" border="2" cellspacing="5">
+    <tr height="250">
+        <td width="220">
+            <h2>Table of Contents</h2>
+            <ol>
+                <li>
+                    <input type="checkbox" ng-model="js"> JavaScript
+                </li>
+                <li>
+                    <input type="checkbox" ng-model="angular"> Angular JS
+                </li>
+            </ol>
+        </td>
+        <td>
+            <details ng-open="js">
+                <summary>JavaScript</summary>
+                <ul>
+                    <li>Variables</li>
+                    <li>Operators</li>
+                    <li>Statements</li>
+                </ul>
+            </details>
+            <details ng-open="angular">
+                <summary>Angular JS</summary>
+                <ul>
+                    <li>Directives</li>
+                    <li>Filters</li>
+                    <li>Services</li>
+                </ul>
+            </details>
+        </td>
+    </tr>
+</table> <br>
+<dialog ng-open="ads">
+    <img src="Images/pepsi2.jpg" width="500" height="250">
+</dialog> <br>
+</body>
+</html>

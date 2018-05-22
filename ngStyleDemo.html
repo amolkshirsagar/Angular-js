@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app = angular.module('myApp',[]);
+        app.controller('HomeController',function ($scope) {
+            $scope.Styleobj = {};
+            $scope.RedStyle = function () {
+                $scope.Styleobj = {
+                    "background-color": "red",
+                    "color": "white",
+                    "text-align": "center"
+                };
+            }
+            $scope.GreenStyle = function () {
+                $scope.Styleobj = {
+                    "background-color": "green",
+                    "color": "white",
+                    "text-align": "center"
+                };
+            }
+        })
+    </script>
+</head>
+<body ng-app="myApp", ng-controller="HomeController">
+<fieldset>
+    <legend>Select Any</legend>
+<button ng-click="RedStyle()">Red/White</button>
+<button ng-click="GreenStyle()">Green/White</button>
+</fieldset>
+<h2 ng-style="Styleobj">Angular JS</h2>
+</body>
+</html>

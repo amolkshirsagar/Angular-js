@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Model Demo</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app = angular.module("myApp",[]);
+        app.controller('HomeController', function ($scope) {
+            $scope.uname="";
+            $scope.dob="";
+            $scope.age="";
+            $scope.gender="";
+            $scope.city="";
+            $scope.IsVisible=false;
+
+            $scope.Update = function () {
+                $scope.IsVisible=true;
+                $scope.userName=$scope.uname;
+                $scope.dateofBirth=$scope.dob;
+                $scope.userAge=$scope.age;
+                $scope.userGender=$scope.gender;
+                $scope.userCity=$scope.city;
+            }
+        });
+    </script>
+</head>
+<body ng-app="myApp", ng-controller="HomeController">
+<fieldset>
+    <legend>Register</legend>
+    <table border="1" width="400">
+        <tr>
+            <td>User Name</td>
+            <td> <input type="text" ng-model="uname"> </td>
+        </tr>
+        <tr>
+            <td>Date of Birth</td>
+            <td> <input type="date" ng-model="dob"> </td>
+        </tr>
+        <tr>
+            <td>Age</td>
+            <td><input type="number" ng-model="age"></td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td> <input type="radio" name="gender" value="Male" ng-model="gender">Male
+            <input type="radio" name="gender" value="Female" ng-model="gender">Female</td>
+        </tr>
+        <tr>
+            <td>City</td>
+            <td>
+                <select ng-model="city">
+                    <option value="Delhi">Delhi</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Kolkata">Kolkata</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <button ng-click="Update()">Update</button>
+            </td>
+        </tr>
+    </table>
+</fieldset> <br> <br>
+<fieldset ng-show="IsVisible">
+    <legend>Details</legend>
+    <dl>
+        <dt>User Name :</dt>
+        <dd>{{userName}}</dd>
+        <dt>Date of Birth :</dt>
+        <dd>{{dateofBirth | date}}</dd>
+        <dt>Age :</dt>
+        <dd>{{userAge}}</dd>
+        <dt>Gender :</dt>
+        <dd>{{userGender}}</dd>
+        <dt>City :</dt>
+        <dd>{{userCity}}</dd>
+    </dl>
+</fieldset>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

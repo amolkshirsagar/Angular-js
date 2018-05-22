@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app = angular.module('myApp',[]);
+        app.controller('HomeController', function ($scope) {
+            $scope.index=0;
+            $scope.car="Images/1.jpg";
+            $scope.title="Suzuki Baleno";
+            $scope.cars=["Images/1.jpg","Images/2.jpg","Images/3.jpg","Images/4.jpg"];
+            $scope.carNames=["Suzuki Baleno", "Mercedes AMG", "Hyundai Verna", "Volkswagen Passat"];
+            $scope.changecar=function () {
+                $scope.car=$scope.cars[$scope.index];
+                $scope.title=$scope.carNames[$scope.index];
+            }
+        })
+    </script>
+</head>
+<body ng-app="myApp", ng-controller="HomeController">
+<table width="400" border="1">
+    <tr>
+        <td align="center">{{title}}</td>
+    </tr>
+    <tr>
+        <td>
+            <img ng-src="{{car}}" width="400" height="400">
+        </td>
+    </tr>
+    <tr>
+        <td align="center">
+            1<input type="range" min="0" max="4" ng-model="index" ng-change="changecar()">4
+        </td>
+    </tr>
+</table>
+</body>
+</html>

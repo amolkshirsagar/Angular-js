@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app = angular.module('myApp',[]);
+        app.controller('HomeController',function ($scope) {
+            $scope.paymentDetails="Select an Option";
+            $scope.regExp ="";
+            $scope.errorMsg="";
+            $scope.getOption = function () {
+                $scope.msg = $scope.paymentDetails;
+                switch ($scope.msg)
+                {
+                    case "Card Number" :
+                        $scope.regExp = "\\d{16}";
+                        $scope.errorMsg = "Invalid Card Number.";
+                        break;
+                    case "CVV" :
+                        $scope.regExp = "\\d{3}";
+                        $scope.errorMsg = "Invalid CVV";
+                        break;
+                    case "OTP" :
+                        $scope.regExp = "\\d{6}";
+                        $scope.errorMsg = "Invalid OTP";
+                        break;
+                }
+            }
+        });
+    </script>
+</head>
+<body ng-app="myApp", ng-controller="HomeController">
+<form name="form1">
+    <fieldset>
+        <legend>Payment</legend>
+        Card Details :
+        <select ng-model="paymentDetails" ng-change="getOption()">
+            <option value="Card Number">Card Number</option>
+            <option value="CVV">CVV</option>
+            <option value="OTP">OTP</option>
+        </select> <br><br>
+        {{paymentDetails}} :
+        <input type="text" name="txtValue" ng-model="txtValue" ng-pattern="regExp" size="30">
+        <span ng-show="form1.txtValue.$invalid">
+            {{errorMsg}}
+        </span>
+    </fieldset>
+</form>
+</body>
+</html>

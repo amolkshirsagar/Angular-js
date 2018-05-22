@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('myApp',[]);
+        app.controller('HomeController',function ($scope, $timeout) {
+            $scope.msg="Hi!";
+            $timeout(function () {
+                $scope.msg="Welcome to AngularJS";
+            },5000)
+        })
+    </script>
+</head>
+<body ng-app="myApp" ng-controller="HomeController">
+{{msg}}
+</body>
+</html>
